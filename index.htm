@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="navbar">
+        <h3 class="logo">LOGO</h3>
+
+        <button id="hamburger""><i class=" fas fa-bars"></i></button>
+        <button id="cross"><i class="fas fa-times"></i></button>
+    </header>
+
+    <div class="slidebar">
+
+        <ul id="nav">
+            <li class="nav-links"><a href="#" class="nav-a">Home <span><i class="fas fa-caret-down"></i></span></a>
+                <ul class="dropdown close next-ul">
+                    <li class="drop-links">Home1</li>
+                    <li class="drop-links">Home2</li>
+                    <li class="drop-links">Home3</li>
+                </ul>
+            </li>
+            <li class="nav-links"><a href="#">About</a></li>
+            <li class="nav-links"><a href="#" class="nav-a">Service <span><i class="fas fa-caret-down"></i></span></a>
+                <ul class="dropdown close next-ul">
+                    <li class="drop-links">service1</li>
+                    <li class="drop-links">service2</li>
+                    <li class="drop-links">service3</li>
+                </ul></li>
+            <li class="nav-links"><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#cross").hide();
+            $(".slidebar").hide();
+            $("#hamburger").click(function () {
+                $(".slidebar").show();
+                $("#cross").show();
+                $(this).hide();
+                $(".slidebar").addClass('slide-ani');
+               
+            });
+
+            $("#cross").click(function () {
+                $(".slidebar").removeClass('slide-ani');
+                $(this).hide();
+                $("#hamburger").show();
+                $('.next-ul').removeClass("open");
+               
+            });
+
+            $('.nav-a').on('click', function () {
+              var submenu = $(this).next('.next-ul');
+              if(submenu.hasClass('open')) {
+                  submenu.removeClass('open')
+              }else{
+                $('.next-ul').removeClass('open')
+                submenu.addClass('open')
+              }
+            });
+
+            
+        });
+
+    </script>
+
+
+</body>
+
+</html>
